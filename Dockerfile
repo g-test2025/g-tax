@@ -159,11 +159,14 @@ COPY --chown=${USER}:${USER} .docker/start-container /usr/local/bin/start-contai
 # Copy environment file
 COPY --chown=${USER}:${USER} .env.example ./.env
 
+
+
 RUN chmod +x /usr/local/bin/start-container && \
     cat .docker/utilities.sh >> ~/.bashrc
 
 EXPOSE 8000
-EXPOSE 8080
+# gerald add  this line 
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 ENTRYPOINT ["start-container"]
 

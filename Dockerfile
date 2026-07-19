@@ -168,7 +168,9 @@ EXPOSE 8000
 # gerald add  this line 
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
 
-ENTRYPOINT ["start-container"]
+# ENTRYPOINT ["start-container"]
+ENTRYPOINT ["setup.sh"]
+
 
 HEALTHCHECK --start-period=5s --interval=2s --timeout=5s --retries=8 CMD php artisan octane:status || exit 1
 

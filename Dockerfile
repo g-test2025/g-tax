@@ -166,7 +166,7 @@ RUN chmod +x /usr/local/bin/start-container && \
 
 EXPOSE 8000
 # gerald add  this line 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "gunicorn app:app --bind 0.0.0.0:8000"]
 
 ENTRYPOINT ["start-container"]
 
